@@ -5,5 +5,4 @@ class AnnotationTest {
     @Test
     void initAll() {
     }
-    @Test
 }

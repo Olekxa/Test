@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("TestInfo Demo")
-public class Example_6_Constructor {
+public class Example_8_Constructor {
 
-    Example_6_Constructor(TestInfo testInfo) {
+    Example_8_Constructor(TestInfo testInfo) {
         assertEquals("TestInfo Demo", testInfo.getDisplayName());
     }
 
