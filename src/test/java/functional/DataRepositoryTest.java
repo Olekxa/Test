@@ -51,6 +51,6 @@ class DataRepositoryTest {
     @Test
     void fetchItem() {
         repository.fetchItem(1);
-        Mockito.verify(service).getItem(any());
+        Mockito.verify(service).getItem(1);
     }
 }
