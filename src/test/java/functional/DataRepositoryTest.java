@@ -10,7 +10,7 @@ class DataRepositoryTest {
 
     @BeforeEach
     void init() {
-        repository = new DataRepository(new FileService("data.txt"));
+        repository = new DataRepository(new FileSource("data.txt"));
     }
 
     @Test

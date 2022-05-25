@@ -1,7 +1,7 @@
 package functional;
 
 
-public interface Service {
+public interface Source {
 
     void insert(Data data);
 

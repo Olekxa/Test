@@ -2,10 +2,10 @@ package functional;
 
 import java.io.*;
 
-public class FileService implements Source {
-    private String fileName;
+public class FileSource implements Source {
+    private final String fileName;
 
-    public FileService(String fileName) {
+    public FileSource(String fileName) {
         this.fileName = fileName;
     }
 

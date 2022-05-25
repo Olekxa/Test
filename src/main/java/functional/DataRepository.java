@@ -1,25 +1,25 @@
 package functional;
 
 public class DataRepository implements Repository {
-    private Service service;
+    private final Source source;
 
-    public DataRepository(Service service) {
-        this.service = service;
+    public DataRepository(Source source) {
+        this.source = source;
     }
 
     @Override
     public void insertItem(Data data) {
-        this.service.insert(data);
+        this.source.insert(data);
     }
 
     @Override
     public boolean deleteItem() {
-        return this.service.delete();
+        return this.source.delete();
 
     }
 
     @Override
     public Data fetchItem() {
-        return service.getItem();
+        return source.getItem();
     }
 }
