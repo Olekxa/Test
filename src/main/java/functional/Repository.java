@@ -4,8 +4,8 @@ public interface Repository {
 
     void insertItem(Data data);
 
-    boolean deleteItem(Data data);
+    boolean deleteItem();
 
-    Data fetchItem(int id);
+    Data fetchItem();
 
 }

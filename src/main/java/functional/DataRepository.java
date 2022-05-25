@@ -13,13 +13,13 @@ public class DataRepository implements Repository {
     }
 
     @Override
-    public boolean deleteItem(Data data) {
-        return this.service.delete(data);
+    public boolean deleteItem() {
+        return this.service.delete();
 
     }
 
     @Override
-    public Data fetchItem(int id) {
-        return service.getItem(id);
+    public Data fetchItem() {
+        return service.getItem();
     }
 }

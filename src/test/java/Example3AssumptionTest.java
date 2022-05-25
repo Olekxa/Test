@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 
-public class Example_3_Assumption {
+public class Example3AssumptionTest {
 
     private final Calc calculator = new Calc();
 

@@ -1,8 +1,7 @@
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-public class Example_4_Disable {
+public class Example4DisableTest {
 
     @Disabled("Disabled until bug #99 has been fixed")
     class DisabledClassDemo {

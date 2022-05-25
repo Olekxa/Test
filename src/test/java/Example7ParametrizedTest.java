@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class Example_7_Parametrized {
+public class Example7ParametrizedTest {
 
     @ParameterizedTest
     @ValueSource(ints = { 1, 2, 3 })

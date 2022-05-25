@@ -1,8 +1,11 @@
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
-public class Example_6_Order {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class Example6OrderTest {
     @Test
     @Order(1)
     void nullValues() {

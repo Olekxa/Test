@@ -3,7 +3,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-class Example_1_Annotation {
+class Example1AnnotationTest {
 
     @BeforeAll
     static void initAll() {

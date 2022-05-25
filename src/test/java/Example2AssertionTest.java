@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import static java.time.Duration.ofMinutes;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Example_2_Assertion {
+public class Example2AssertionTest {
 
     private final Calc calculator = new Calc();
 

@@ -1,56 +1,48 @@
 package functional;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DataRepositoryTest {
-    @Mock
-    Service service;
     Repository repository;
-
 
     @BeforeEach
     void init() {
-        repository = new DataRepository(service);
+        repository = new DataRepository(new FileService("data.txt"));
     }
 
     @Test
+    @Order(1)
     void insertItem() {
-
         repository.insertItem(new Data(1, ""));
-        Mockito.verify(service).insert(any());
-
     }
 
     @Test
+    @Order(2)
+    void fetchItemSuccess() {
+        var data = repository.fetchItem();
+        assertEquals(new Data(1, ""), data);
+    }
+
+    @Test
+    @Order(3)
     void deleteItemSuccess() {
-        Mockito.lenient().when(service.delete(any())).thenReturn(true);
-        var res = repository.deleteItem(new Data(1, ""));
-        Mockito.verify(service).delete(any());
+        var res = repository.deleteItem();
         assertTrue(res);
     }
 
     @Test
+    @Order(4)
     void deleteItemFail() {
-        Mockito.lenient().when(service.delete(any())).thenReturn(false);
-        var res = repository.deleteItem(new Data(1, "F"));
-        Mockito.verify(service).delete(any());
+        var res = repository.deleteItem();
         assertFalse(res);
     }
 
-
     @Test
-    void fetchItem() {
-        repository.fetchItem(1);
-        Mockito.verify(service).getItem(1);
+    @Order(5)
+    void fetchItemFail() {
+        assertThrows(RuntimeException.class, () -> repository.fetchItem());
     }
 }

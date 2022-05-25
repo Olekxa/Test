@@ -7,7 +7,7 @@ import org.junit.jupiter.api.condition.EnabledOnOs;
 import static org.junit.jupiter.api.condition.JRE.JAVA_8;
 import static org.junit.jupiter.api.condition.OS.MAC;
 
-public class Example_5_Conditions {
+public class Example5ConditionsTest {
 
     @Test
     @EnabledOnOs(MAC)
