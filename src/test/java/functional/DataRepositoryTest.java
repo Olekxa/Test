@@ -45,4 +45,9 @@ class DataRepositoryTest {
     void fetchItemFail() {
         assertThrows(RuntimeException.class, () -> repository.fetchItem());
     }
+
+    @AfterEach
+    void tearDown() {
+        repository = null;
+    }
 }
