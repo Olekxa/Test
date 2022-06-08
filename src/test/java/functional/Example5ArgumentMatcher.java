@@ -13,16 +13,8 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class Example5 {
+public class Example5ArgumentMatcher {
     private final PasswordEncoder passwordEncoder = mock(PasswordEncoder.class);
-
-    @Test
-    public void simpleDemo() {
-        when(passwordEncoder.encode(anyString())).thenReturn("exact");
-
-        assertEquals("exact", passwordEncoder.encode("1"));
-        assertEquals("exact", passwordEncoder.encode("abc"));
-    }
 
     @Test(expected = InvalidUseOfMatchersException.class)
     public void allArgumentsByMatchersWithInvalidUseOfMatchers() {

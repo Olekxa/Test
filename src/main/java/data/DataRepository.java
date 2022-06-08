@@ -1,4 +1,4 @@
-package mock;
+package data;
 
 public class DataRepository implements Repository {
     private final Source source;
@@ -14,6 +14,15 @@ public class DataRepository implements Repository {
 
     @Override
     public boolean putData(String text) {
-        return source.putData(text);
+        if (validate(text)) {
+            return source.putData(text);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public boolean validate(String text) {
+        return text != null && !text.isEmpty();
     }
 }
+

@@ -10,6 +10,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@Deprecated
 public class Example2 {
 
     @Test
@@ -27,6 +28,6 @@ public class Example2 {
         verify(spy).add("one");
         verify(spy).add("two");
 
-        assertEquals("one", spy.get(0));
+        assertEquals(2, spy.size());
     }
 }

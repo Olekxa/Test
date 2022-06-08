@@ -1,6 +1,6 @@
-package mock;
+package data;
 
-public interface Source {
+public interface Repository {
 
     String getData();
     boolean putData(String text);

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
-public class Example3 {
+public class Example1MockDefaultValues {
     @Test
     public void testDefaultValues() {
         Demo demo = mock(Demo.class);
