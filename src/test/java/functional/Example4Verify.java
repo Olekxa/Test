@@ -8,7 +8,7 @@ import org.mockito.exceptions.verification.VerificationInOrderFailure;
 
 import static org.mockito.Mockito.*;
 
-public class Example6Verify {
+public class Example4Verify {
 
     private PasswordEncoder passwordEncoder;
 
@@ -23,19 +23,19 @@ public class Example6Verify {
         passwordEncoder.encode("a");
         verify(passwordEncoder).encode(anyString());
 
-        // verify the exact number of invocations
-        verify(passwordEncoder, times(42)).encode(anyString());
-        // verify that there was at least one invocation
-        verify(passwordEncoder, atLeastOnce()).encode(anyString());
-        // verify that there were at least five invocations
-        verify(passwordEncoder, atLeast(5)).encode(anyString());
-        // verify the maximum number of invocations
-        verify(passwordEncoder, atMost(5)).encode(anyString());
-        // verify that there were no invocations
-        verify(passwordEncoder, never()).encode(anyString());
-        // verify that it was the only invocation and
-        // that there're no more unverified interactions
-        verify(passwordEncoder, only()).encode(anyString());
+//        // verify the exact number of invocations
+//        verify(passwordEncoder, times(42)).encode(anyString());
+//        // verify that there was at least one invocation
+//        verify(passwordEncoder, atLeastOnce()).encode(anyString());
+//        // verify that there were at least five invocations
+//        verify(passwordEncoder, atLeast(5)).encode(anyString());
+//        // verify the maximum number of invocations
+//        verify(passwordEncoder, atMost(5)).encode(anyString());
+//        // verify that there were no invocations
+//        verify(passwordEncoder, never()).encode(anyString());
+//        // verify that it was the only invocation and
+//        // that there're no more unverified interactions
+//        verify(passwordEncoder, only()).encode(anyString());
 
     }
 

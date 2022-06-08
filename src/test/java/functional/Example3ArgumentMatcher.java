@@ -13,7 +13,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class Example5ArgumentMatcher {
+public class Example3ArgumentMatcher {
     private final PasswordEncoder passwordEncoder = mock(PasswordEncoder.class);
 
     @Test(expected = InvalidUseOfMatchersException.class)

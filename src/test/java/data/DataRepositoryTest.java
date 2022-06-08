@@ -2,6 +2,7 @@ package data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -16,13 +17,18 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class DataRepositoryTest {
+    Source source;
+
+    @BeforeEach
+    public void beforeMethod() {
+        source = mock(Source.class);
+    }
 
     @Test
     void getData() {
-        Source source = mock(Source.class);
-        DataRepository repository = new DataRepository(source);
         String expectedResult = "text";
-        Mockito.when(source.getData()).thenReturn(expectedResult);
+        DataRepository repository = new DataRepository(source);
+        when(source.getData()).thenReturn(expectedResult);
 
         String result = repository.getData();
 
@@ -32,9 +38,8 @@ class DataRepositoryTest {
 
     @Test
     void putData() {
-        Source source = mock(Source.class);
-        DataRepository repository = new DataRepository(source);
         boolean expectedResult = true;
+        DataRepository repository = new DataRepository(source);
         Mockito.when(source.putData(anyString())).thenReturn(expectedResult);
 
         boolean result = repository.putData("test data");
@@ -44,8 +49,7 @@ class DataRepositoryTest {
     }
 
     @Test
-    void putDataValid() {
-        Source source = mock(Source.class);
+    void putDataValidWithSpy() {
         DataRepository repository = spy(new DataRepository(source));
         when(source.putData(anyString())).thenReturn(true);
 
@@ -58,12 +62,40 @@ class DataRepositoryTest {
 
     @Test()
     void putDataInvalid() {
-        Source source = mock(Source.class);
         DataRepository repository = spy(new DataRepository(source));
-
-        assertThrowsExactly(IllegalArgumentException.class, () -> repository.putData(""));
 
         verify(repository).validate(anyString());
         verify(source, never()).putData(anyString());
+
+        assertThrowsExactly(IllegalArgumentException.class, () -> repository.putData(""));
+    }
+
+    @Test()
+    void thenReturnConsecutive() {
+        DataRepository repository = spy(new DataRepository(source));
+        when(source.getData()).thenReturn("a", "z");
+
+        assertEquals("a", repository.getData());
+        assertEquals("z", repository.getData());
+        assertEquals("z", repository.getData());
+    }
+
+    @Test
+    public void thenAnswerThrowException() {                                // & change behavior
+        DataRepository repository = spy(new DataRepository(source));
+        when(repository.putData(""))
+                .thenAnswer(invocation -> {
+                    throw new IllegalArgumentException();
+                });
+    }
+
+    @Test
+    public void thenThrowException() {
+        DataRepository repository = spy(new DataRepository(source));
+        when(repository.putData(""))
+                //.thenThrow(IllegalArgumentException.class);
+        .thenThrow(new IllegalArgumentException());
+
+        verify(source, never()).getData();
     }
 }

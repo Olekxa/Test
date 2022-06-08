@@ -9,7 +9,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class Example4 {
+public class Example2CallRealMethod {
 
     private PasswordEncoder passwordEncoder;
 
@@ -19,36 +19,11 @@ public class Example4 {
     }
 
     @Test
-    public void thenReturn() {
-        when(passwordEncoder.encode("1")).thenReturn("a");
-
-        assertEquals("a", passwordEncoder.encode("1"));
-    }
-
-    @Test
-    public void thenReturnConsecutive() {
-        when(passwordEncoder.encode("1")).thenReturn("a", "b");
-
-        assertEquals("a", passwordEncoder.encode("1"));
-        assertEquals("b", passwordEncoder.encode("1"));
-        assertEquals("b", passwordEncoder.encode("1"));
-    }
-
-    @Test
     public void thenAnswerGetArgument() {
         when(passwordEncoder.encode("1")).thenAnswer(
                 invocation -> invocation.getArgument(0) + "!");
 
         assertEquals("1!", passwordEncoder.encode("1"));
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void thenAnswerThrowException() {
-        when(passwordEncoder.encode("1")).thenAnswer(invocation -> {
-            throw new IllegalArgumentException();
-        });
-
-        passwordEncoder.encode("1");
     }
 
     @Test
@@ -76,19 +51,5 @@ public class Example4 {
         mock.setTime(42);
 
         assertEquals(42, mock.getTime());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void thenThrowExceptionByInstance() {
-        when(passwordEncoder.encode("1")).thenThrow(new IllegalArgumentException());
-
-        passwordEncoder.encode("1");
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void thenThrowExceptionByClass() {
-        when(passwordEncoder.encode("1")).thenThrow(IllegalArgumentException.class);
-
-        passwordEncoder.encode("1");
     }
 }

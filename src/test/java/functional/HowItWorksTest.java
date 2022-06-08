@@ -29,7 +29,7 @@ public class HowItWorksTest {
         mock.encode("a");
         when("Hi, Mockito!").thenReturn("1");
 
-        mock.encode("a");
+        mock.encode("ab");
         verify(mock).encode(or(eq("a"), endsWith("b")));
     }
 
