@@ -2,18 +2,31 @@ package functional;
 
 import org.junit.jupiter.api.Test;
 
-import java.text.DecimalFormat;
-
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-//@ExtendWith(MockitoExtension.class)
 public class Example2 {
 
     @Test
     public void test() {
-        DecimalFormat decimalFormat = spy(new DecimalFormat());
-        assertEquals("42", decimalFormat.format(42L));
+        List<String> spy = spy(new LinkedList<>());
+
+        //optionally, you can stub out some methods:
+        when(spy.size()).thenReturn(2);
+
+        //using the spy calls *real* methods
+        spy.add("one");
+        spy.add("two");
+
+        //optionally, you can verify
+        verify(spy).add("one");
+        verify(spy).add("two");
+
+        assertEquals("one", spy.get(0));
     }
 }
